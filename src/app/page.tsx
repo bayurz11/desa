@@ -6,6 +6,7 @@ import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import InfoCards from "../components/InfoCards";
 import SambutanPageSection from "../components/sambutanPageSection";
 import StrukturOrganisasi from "../components/StrukturOrganisasi";
+import PopulationProps from "../components/AdmPenduduk";
 import Image from "next/image";
 
 export default function TypewriterEffectDemo() {
@@ -65,7 +66,7 @@ export default function TypewriterEffectDemo() {
       </div>
       <SambutanPageSection />
       <StrukturOrganisasi />
-  <div>tes</div>
+      <PopulationProps/>
       {showScrollToTop && (
         <button
           onClick={scrollToTop}
