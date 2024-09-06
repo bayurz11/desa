@@ -65,7 +65,7 @@ export default function TypewriterEffectDemo() {
       </div>
       <SambutanPageSection />
       <StrukturOrganisasi />
-      
+  <div>tes</div>
       {showScrollToTop && (
         <button
           onClick={scrollToTop}
