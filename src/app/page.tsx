@@ -45,6 +45,7 @@ export default function TypewriterEffectDemo() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SpeedInsights/>
       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="flex flex-col items-center justify-center min-h-[50rem] mt-6">
         <Image
@@ -64,7 +65,7 @@ export default function TypewriterEffectDemo() {
       </div>
       <SambutanPageSection />
       <StrukturOrganisasi />
-      <SpeedInsights/>
+      
       {showScrollToTop && (
         <button
           onClick={scrollToTop}
