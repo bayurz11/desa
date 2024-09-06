@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Navbar from "../components/NavBar";
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import InfoCards from "../components/InfoCards";
@@ -63,6 +64,7 @@ export default function TypewriterEffectDemo() {
       </div>
       <SambutanPageSection />
       <StrukturOrganisasi />
+      <SpeedInsights/>
       {showScrollToTop && (
         <button
           onClick={scrollToTop}
