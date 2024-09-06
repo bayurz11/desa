@@ -1,17 +1,36 @@
 import React from 'react';
+import { useSpring, animated } from '@react-spring/web';
+
+interface PopulationCardProps {
+  title: string;
+  count: number;
+}
+
+const PopulationCard: React.FC<PopulationCardProps> = ({ title, count }) => {
+  // Animasi untuk angka
+  const props = useSpring({
+    to: { number: count },
+    from: { number: 0 },
+    config: { duration: 4000 }, // Durasi animasi
+  });
+
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-md w-full border border-gray-300 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl animate-fade-in">
+      <h3 className="text-lg font-semibold text-center mb-3">{title}</h3>
+      <p className="text-5xl font-extrabold text-center text-blue-600">
+        <animated.span>
+          {props.number.to(n => Math.floor(n))}
+        </animated.span>
+      </p>
+    </div>
+  );
+};
 
 interface PopulationProps {
   total: number;
   male: number;
   female: number;
 }
-
-const PopulationCard: React.FC<{ title: string; count: number }> = ({ title, count }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md w-full border border-gray-300 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl animate-fade-in">
-    <h3 className="text-lg font-semibold text-center mb-3">{title}</h3>
-    <p className="text-5xl font-extrabold text-center text-blue-600">{count}</p>
-  </div>
-);
 
 const PopulationStatistics: React.FC<PopulationProps> = ({ total, male, female }) => {
   return (

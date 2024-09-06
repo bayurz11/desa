@@ -66,7 +66,7 @@ export default function TypewriterEffectDemo() {
       </div>
       <SambutanPageSection />
       <StrukturOrganisasi />
-      <PopulationProps/>
+      <PopulationProps total={1234} male={600} female={634} />
       {showScrollToTop && (
         <button
           onClick={scrollToTop}
