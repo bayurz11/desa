@@ -30,9 +30,12 @@ interface PopulationProps {
   total: number;
   male: number;
   female: number;
+  keluarga: number;
+  Sementara: number;
+  Mutasi: number;
 }
 
-const PopulationStatistics: React.FC<PopulationProps> = ({ total, male, female }) => {
+const PopulationStatistics: React.FC<PopulationProps> = ({ total, male, female,keluarga,Sementara,Mutasi }) => {
   return (
     <div className="p-8 animate-fade-in">
       <h2 className="text-3xl font-bold text-center mb-6">Administrasi Penduduk</h2>
@@ -44,6 +47,9 @@ const PopulationStatistics: React.FC<PopulationProps> = ({ total, male, female }
         <PopulationCard title="Total Penduduk" count={total} />
         <PopulationCard title="Laki-Laki" count={male} />
         <PopulationCard title="Perempuan" count={female} />
+        <PopulationCard title="Kepala Keluarga" count={keluarga} />
+        <PopulationCard title="Penduduk Sementara" count={Sementara} />
+        <PopulationCard title="Mutasi Penduduk" count={Mutasi} />
       </div>
     </div>
   );
