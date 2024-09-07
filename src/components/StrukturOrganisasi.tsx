@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const StrukturOrganisasi: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isScrolling = useRef(false); // Menyimpan status scrolling manual
 
   useEffect(() => {
     const scrollContainer = containerRef.current;
@@ -15,7 +14,6 @@ const StrukturOrganisasi: React.FC = () => {
       let startTime: number | null = null;
 
       const animateScroll = (timestamp: number) => {
-        if (isScrolling.current) return; // Hentikan animasi saat pengguna scroll manual
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
         const progress = (elapsed % duration) / duration;
@@ -31,33 +29,13 @@ const StrukturOrganisasi: React.FC = () => {
 
       requestAnimationFrame(animateScroll);
 
-      // Tambahkan event listener untuk menangani scroll manual
-      const handleScrollStart = () => {
-        isScrolling.current = true;
-      };
-
-      const handleScrollEnd = () => {
-        isScrolling.current = false;
-        startTime = null; // Reset startTime untuk melanjutkan animasi
-        requestAnimationFrame(animateScroll);
-      };
-
-      // Tambahkan event untuk interaksi scroll di desktop dan mobile
-      scrollContainer.addEventListener("scroll", handleScrollStart);
-      scrollContainer.addEventListener("touchend", handleScrollEnd); // Untuk mobile (touch)
-      scrollContainer.addEventListener("mouseup", handleScrollEnd); // Untuk desktop (mouse)
-      scrollContainer.addEventListener("mouseleave", handleScrollEnd); // Untuk kasus mouse keluar dari area kontainer
-
       return () => {
-        scrollContainer.removeEventListener("scroll", handleScrollStart);
-        scrollContainer.removeEventListener("touchend", handleScrollEnd);
-        scrollContainer.removeEventListener("mouseup", handleScrollEnd);
-        scrollContainer.removeEventListener("mouseleave", handleScrollEnd);
+        // Tidak perlu menghapus event listener karena kita tidak menambahkannya
       };
     }
   }, []);
 
-  const items = Array.from({ length: 7 }, (_, i) => i); // Mengubah jumlah item menjadi 7
+  const items = Array.from({ length: 12 }, (_, i) => i); // Mengubah jumlah item menjadi 7
 
   return (
     <div className="flex flex-col items-center justify-center mt-12 bg-white py-10 px-4">
@@ -93,6 +71,9 @@ const StrukturOrganisasi: React.FC = () => {
           ))}
         </div>
       </div>
+      <button className="mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        Lihat Lebih Banyak
+      </button>
     </div>
   );
 };
