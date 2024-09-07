@@ -5,6 +5,9 @@ const StrukturOrganisasi: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   let isUserScrolling = false;
 
+  // Menentukan berapa banyak duplikat item yang ingin ditampilkan
+  const duplicateCount = 2; // Atur jumlah duplikat yang diinginkan
+
   useEffect(() => {
     const scrollContainer = containerRef.current;
     if (scrollContainer) {
@@ -21,7 +24,7 @@ const StrukturOrganisasi: React.FC = () => {
         const maxScrollLeft = scrollWidth - containerWidth;
 
         if (!isUserScrolling) {
-          // Kalkulasi posisi scroll
+          // Smooth transition
           scrollContainer.scrollLeft = progress * maxScrollLeft;
 
           // Ketika mencapai akhir, reset scrollLeft tanpa loncatan
@@ -90,25 +93,28 @@ const StrukturOrganisasi: React.FC = () => {
               </p>
             </div>
           ))}
+
           {/* Duplikat item untuk menciptakan ilusi infinite scrolling */}
-          {items.map((item) => (
-            <div
-              key={`dup-${item}`}
-              className="bg-white p-4 rounded-lg shadow-md w-64 flex-shrink-0 flex flex-col items-center snap-center"
-            >
-              <Image
-                src={`/assets/img/user/images.png`} // Ganti dengan URL gambar yang sesuai
-                alt={`Foto Posisi Duplikat ${item + 1}`}
-                width={400} // Sesuaikan ukuran gambar
-                height={400} // Sesuaikan ukuran gambar
-                className="w-24 h-24 rounded-full mb-2 object-cover"
-              />
-              <h3 className="text-lg font-semibold text-center mb-2">Nama Posisi {item + 1}</h3>
-              <p className="text-center text-sm text-gray-700">
-                Deskripsi singkat tentang posisi ini.
-              </p>
-            </div>
-          ))}
+          {Array.from({ length: duplicateCount }).map((_, dupIndex) =>
+            items.map((item) => (
+              <div
+                key={`dup-${dupIndex}-${item}`}
+                className="bg-white p-4 rounded-lg shadow-md w-64 flex-shrink-0 flex flex-col items-center snap-center"
+              >
+                <Image
+                  src={`/assets/img/user/images.png`} // Ganti dengan URL gambar yang sesuai
+                  alt={`Foto Posisi Duplikat ${item + 1}`}
+                  width={400} // Sesuaikan ukuran gambar
+                  height={400} // Sesuaikan ukuran gambar
+                  className="w-24 h-24 rounded-full mb-2 object-cover"
+                />
+                <h3 className="text-lg font-semibold text-center mb-2">Nama Posisi {item + 1}</h3>
+                <p className="text-center text-sm text-gray-700">
+                  Deskripsi singkat tentang posisi ini.
+                </p>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>
