@@ -13,7 +13,7 @@ const StrukturOrganisasi: React.FC = () => {
     if (scrollContainer) {
       const scrollWidth = scrollContainer.scrollWidth;
       const containerWidth = scrollContainer.clientWidth;
-      const duration = 3000; // Durasi animasi (50 detik)
+      const duration = 50000; // Durasi animasi (50 detik)
 
       let startTime: number | null = null;
 
@@ -57,7 +57,7 @@ const StrukturOrganisasi: React.FC = () => {
     }
   }, []);
 
-  const items = Array.from({ length: 10 }, (_, i) => i);
+  const items = Array.from({ length: 7 }, (_, i) => i);
 
   return (
     <div className="flex flex-col items-center justify-center mt-12 bg-white py-10 px-4">
