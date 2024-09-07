@@ -3,18 +3,18 @@ import Image from "next/image";
 
 const StrukturOrganisasi: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  let isUserScrolling = false;
+  let isUserHovering = false; // Untuk mendeteksi apakah mouse sedang di atas komponen
 
-  // Menentukan berapa banyak duplikat item yang ingin ditampilkan
-  const duplicateCount = 2; // Atur jumlah duplikat yang diinginkan
+  // Menentukan jumlah duplikat yang diinginkan
+  const duplicateCount = 2;
 
   useEffect(() => {
     const scrollContainer = containerRef.current;
+
     if (scrollContainer) {
       const scrollWidth = scrollContainer.scrollWidth;
       const containerWidth = scrollContainer.clientWidth;
       const duration = 50000; // Durasi animasi (50 detik)
-
       let startTime: number | null = null;
 
       const animateScroll = (timestamp: number) => {
@@ -23,8 +23,7 @@ const StrukturOrganisasi: React.FC = () => {
         const progress = (elapsed % duration) / duration;
         const maxScrollLeft = scrollWidth - containerWidth;
 
-        if (!isUserScrolling) {
-          // Smooth transition
+        if (!isUserHovering) { // Hanya scroll otomatis jika mouse tidak di atas komponen
           scrollContainer.scrollLeft = progress * maxScrollLeft;
 
           // Ketika mencapai akhir, reset scrollLeft tanpa loncatan
@@ -36,23 +35,25 @@ const StrukturOrganisasi: React.FC = () => {
         requestAnimationFrame(animateScroll);
       };
 
-      // Memulai animasi
+      // Memulai animasi otomatis
       requestAnimationFrame(animateScroll);
 
-      // Deteksi scroll manual
-      const handleUserScroll = () => {
-        isUserScrolling = true;
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-          isUserScrolling = false;
-        }, 3000); // Reset setelah 3 detik
+      // Menambahkan event listener untuk mendeteksi interaksi mouse
+      const handleMouseEnter = () => {
+        isUserHovering = true; // Hentikan animasi otomatis saat mouse di atas komponen
       };
 
-      let timeoutId: NodeJS.Timeout;
-      scrollContainer.addEventListener("scroll", handleUserScroll);
+      const handleMouseLeave = () => {
+        isUserHovering = false; // Lanjutkan animasi otomatis saat mouse keluar dari komponen
+      };
+
+      // Menambahkan event listener untuk mouse
+      scrollContainer.addEventListener("mouseenter", handleMouseEnter);
+      scrollContainer.addEventListener("mouseleave", handleMouseLeave);
 
       return () => {
-        scrollContainer.removeEventListener("scroll", handleUserScroll);
+        scrollContainer.removeEventListener("mouseenter", handleMouseEnter);
+        scrollContainer.removeEventListener("mouseleave", handleMouseLeave);
       };
     }
   }, []);
