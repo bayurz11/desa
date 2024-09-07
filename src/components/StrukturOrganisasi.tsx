@@ -9,7 +9,7 @@ const StrukturOrganisasi: React.FC = () => {
     if (scrollContainer) {
       const scrollWidth = scrollContainer.scrollWidth;
       const containerWidth = scrollContainer.clientWidth;
-      const duration = 30000; // Durasi animasi dalam milidetik
+      const duration = 40000; // Durasi animasi dalam milidetik
 
       let startTime: number | null = null;
 
