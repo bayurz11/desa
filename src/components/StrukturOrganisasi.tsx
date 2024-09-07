@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const StrukturOrganisasi: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  let isUserHovering = false; // Untuk mendeteksi apakah mouse sedang di atas komponen
+  let isUserInteracting = false; // Untuk mendeteksi apakah ada interaksi dengan komponen (desktop atau mobile)
 
   // Menentukan jumlah duplikat yang diinginkan
   const duplicateCount = 2;
@@ -23,7 +23,7 @@ const StrukturOrganisasi: React.FC = () => {
         const progress = (elapsed % duration) / duration;
         const maxScrollLeft = scrollWidth - containerWidth;
 
-        if (!isUserHovering) { // Hanya scroll otomatis jika mouse tidak di atas komponen
+        if (!isUserInteracting) { // Hanya scroll otomatis jika tidak ada interaksi
           scrollContainer.scrollLeft = progress * maxScrollLeft;
 
           // Ketika mencapai akhir, reset scrollLeft tanpa loncatan
@@ -38,22 +38,36 @@ const StrukturOrganisasi: React.FC = () => {
       // Memulai animasi otomatis
       requestAnimationFrame(animateScroll);
 
-      // Menambahkan event listener untuk mendeteksi interaksi mouse
+      // Menambahkan event listener untuk interaksi mouse dan sentuhan
       const handleMouseEnter = () => {
-        isUserHovering = true; // Hentikan animasi otomatis saat mouse di atas komponen
+        isUserInteracting = true; // Hentikan animasi otomatis saat mouse di atas komponen
       };
 
       const handleMouseLeave = () => {
-        isUserHovering = false; // Lanjutkan animasi otomatis saat mouse keluar dari komponen
+        isUserInteracting = false; // Lanjutkan animasi otomatis saat mouse keluar dari komponen
       };
 
-      // Menambahkan event listener untuk mouse
+      const handleTouchStart = () => {
+        isUserInteracting = true; // Hentikan animasi otomatis saat pengguna menyentuh layar
+      };
+
+      const handleTouchEnd = () => {
+        isUserInteracting = false; // Lanjutkan animasi otomatis saat pengguna melepaskan sentuhan
+      };
+
+      // Menambahkan event listener untuk desktop (mouse)
       scrollContainer.addEventListener("mouseenter", handleMouseEnter);
       scrollContainer.addEventListener("mouseleave", handleMouseLeave);
+
+      // Menambahkan event listener untuk mobile (sentuhan)
+      scrollContainer.addEventListener("touchstart", handleTouchStart);
+      scrollContainer.addEventListener("touchend", handleTouchEnd);
 
       return () => {
         scrollContainer.removeEventListener("mouseenter", handleMouseEnter);
         scrollContainer.removeEventListener("mouseleave", handleMouseLeave);
+        scrollContainer.removeEventListener("touchstart", handleTouchStart);
+        scrollContainer.removeEventListener("touchend", handleTouchEnd);
       };
     }
   }, []);
@@ -94,28 +108,6 @@ const StrukturOrganisasi: React.FC = () => {
               </p>
             </div>
           ))}
-
-          {/* Duplikat item untuk menciptakan ilusi infinite scrolling */}
-          {Array.from({ length: duplicateCount }).map((_, dupIndex) =>
-            items.map((item) => (
-              <div
-                key={`dup-${dupIndex}-${item}`}
-                className="bg-white p-4 rounded-lg shadow-md w-64 flex-shrink-0 flex flex-col items-center snap-center"
-              >
-                <Image
-                  src={`/assets/img/user/images.png`} // Ganti dengan URL gambar yang sesuai
-                  alt={`Foto Posisi Duplikat ${item + 1}`}
-                  width={400} // Sesuaikan ukuran gambar
-                  height={400} // Sesuaikan ukuran gambar
-                  className="w-24 h-24 rounded-full mb-2 object-cover"
-                />
-                <h3 className="text-lg font-semibold text-center mb-2">Nama Posisi {item + 1}</h3>
-                <p className="text-center text-sm text-gray-700">
-                  Deskripsi singkat tentang posisi ini.
-                </p>
-              </div>
-            ))
-          )}
         </div>
       </div>
     </div>
