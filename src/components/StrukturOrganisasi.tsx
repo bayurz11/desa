@@ -6,7 +6,7 @@ const StrukturOrganisasi: React.FC = () => {
   let isUserScrolling = false;
 
   // Menentukan berapa banyak duplikat item yang ingin ditampilkan
-  const duplicateCount = 2; // Atur jumlah duplikat yang diinginkan
+  const duplicateCount = 50; // Atur jumlah duplikat yang diinginkan
 
   useEffect(() => {
     const scrollContainer = containerRef.current;
