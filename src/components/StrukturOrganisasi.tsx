@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const StrukturOrganisasi: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  let isUserScrolling = false; // Untuk mendeteksi apakah pengguna sedang scroll manual
 
   useEffect(() => {
     const scrollContainer = containerRef.current;
@@ -17,32 +18,49 @@ const StrukturOrganisasi: React.FC = () => {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
         const progress = (elapsed % duration) / duration;
-        scrollContainer.scrollLeft = progress * (scrollWidth - containerWidth);
 
-        // Pastikan animasi tetap berjalan halus
-        if (scrollContainer.scrollLeft >= scrollWidth - containerWidth) {
-          startTime = timestamp; // Reset startTime untuk animasi halus dari awal
+        if (!isUserScrolling) { // Hanya scroll otomatis jika pengguna tidak sedang scroll manual
+          scrollContainer.scrollLeft = progress * (scrollWidth - containerWidth);
         }
 
         requestAnimationFrame(animateScroll);
       };
 
+      // Memulai animasi scroll otomatis
       requestAnimationFrame(animateScroll);
+
+      // Menangani deteksi scroll manual oleh pengguna
+      const handleUserScroll = () => {
+        isUserScrolling = true;
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          isUserScrolling = false;
+        }, 1000); // Menganggap pengguna selesai scroll setelah 1 detik
+      };
+
+      let timeoutId: NodeJS.Timeout;
+      scrollContainer.addEventListener("scroll", handleUserScroll);
+
+      return () => {
+        scrollContainer.removeEventListener("scroll", handleUserScroll);
+      };
     }
   }, []);
 
-  const items = Array.from({ length: 7 }, (_, i) => i); // Mengubah jumlah item menjadi 7
+  const items = Array.from({ length: 7 }, (_, i) => i);
 
   return (
-    <div className="flex flex-col items-center justify-center  mt-12 bg-white py-10 px-4">
-      <h2 className="text-2xl font-bold mb-4 text-center md:text-left">Struktur Organisasi Desa Mentuda</h2>
+    <div className="flex flex-col items-center justify-center mt-12 bg-white py-10 px-4">
+      <h2 className="text-2xl font-bold mb-4 text-center md:text-left">
+        Struktur Organisasi Desa Mentuda
+      </h2>
 
       {/* Bagian Card Struktur Organisasi */}
       <div
         ref={containerRef}
-        className="w-full max-w-screen-xl overflow-x-auto whitespace-nowrap bg-gray-100 rounded-lg shadow-md p-4"
+        className="w-full max-w-screen-xl overflow-x-auto whitespace-nowrap bg-gray-100 rounded-lg shadow-md p-4 scroll-smooth"
         style={{
-          scrollbarWidth: 'none',  // Untuk Firefox
+          scrollbarWidth: 'none', // Untuk Firefox
           msOverflowStyle: 'none', // Untuk Internet Explorer dan Edge
         }}
       >
@@ -50,7 +68,7 @@ const StrukturOrganisasi: React.FC = () => {
           {items.map((item) => (
             <div
               key={item}
-              className="bg-white p-4 rounded-lg shadow-md w-64 flex-shrink-0 flex flex-col items-center"
+              className="bg-white p-4 rounded-lg shadow-md w-64 flex-shrink-0 flex flex-col items-center snap-center"
             >
               <Image
                 src={`/assets/img/user/images.png`} // Ganti dengan URL gambar yang sesuai
