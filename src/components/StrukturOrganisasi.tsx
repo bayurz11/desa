@@ -6,14 +6,14 @@ const StrukturOrganisasi: React.FC = () => {
   let isUserScrolling = false;
 
   // Menentukan berapa banyak duplikat item yang ingin ditampilkan
-  const duplicateCount = 50; // Atur jumlah duplikat yang diinginkan
+  const duplicateCount = 2; // Atur jumlah duplikat yang diinginkan
 
   useEffect(() => {
     const scrollContainer = containerRef.current;
     if (scrollContainer) {
       const scrollWidth = scrollContainer.scrollWidth;
       const containerWidth = scrollContainer.clientWidth;
-      const duration = 50000; // Durasi animasi (50 detik)
+      const duration = 3000; // Durasi animasi (50 detik)
 
       let startTime: number | null = null;
 
