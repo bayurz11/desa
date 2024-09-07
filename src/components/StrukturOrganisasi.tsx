@@ -47,7 +47,7 @@ const StrukturOrganisasi: React.FC = () => {
     }
   }, []);
 
-  const items = Array.from({ length: 7 }, (_, i) => i);
+  const items = Array.from({ length: 10 }, (_, i) => i);
 
   return (
     <div className="flex flex-col items-center justify-center mt-12 bg-white py-10 px-4">
