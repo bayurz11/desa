@@ -16,12 +16,13 @@ const PopulationCard: React.FC<PopulationCardProps> = ({ title, count }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md w-full border border-gray-300 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl animate-fade-in">
-      <h3 className="text-lg font-semibold text-center mb-3">{title}</h3>
-      <p className="text-5xl font-extrabold text-center text-blue-600">
-        <animated.span>
-          {props.number.to(n => Math.floor(n))}
-        </animated.span>
-      </p>
+      <h3 className="text-base md:text-base font-semibold text-center mb-3">{title}</h3>
+<p className="text-4xl md:text-4xl font-extrabold text-center text-blue-600">
+  <animated.span>
+    {props.number.to(n => Math.floor(n))}
+  </animated.span>
+</p>
+
     </div>
   );
 };
@@ -43,11 +44,11 @@ const PopulationStatistics: React.FC<PopulationProps> = ({ total, male, female,k
         Sistem digital yang berfungsi mempermudah pengelolaan data dan informasi terkait dengan kependudukan dan
         pendayagunaannya untuk pelayanan publik yang efektif dan efisien.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
         <PopulationCard title="Total Penduduk" count={total} />
+        <PopulationCard title="Kepala Keluarga" count={keluarga} />
         <PopulationCard title="Laki-Laki" count={male} />
         <PopulationCard title="Perempuan" count={female} />
-        <PopulationCard title="Kepala Keluarga" count={keluarga} />
         <PopulationCard title="Penduduk Sementara" count={Sementara} />
         <PopulationCard title="Mutasi Penduduk" count={Mutasi} />
       </div>
