@@ -3,14 +3,14 @@ import Image from "next/image";
 
 const StrukturOrganisasi: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  let isUserScrolling = false; // Untuk mendeteksi apakah pengguna sedang scroll manual
+  let isUserScrolling = false;
 
   useEffect(() => {
     const scrollContainer = containerRef.current;
     if (scrollContainer) {
       const scrollWidth = scrollContainer.scrollWidth;
       const containerWidth = scrollContainer.clientWidth;
-      const duration = 30000; // Durasi animasi dalam milidetik
+      const duration = 50000; // Perpanjang durasi animasi agar lebih smooth (50 detik)
 
       let startTime: number | null = null;
 
@@ -19,23 +19,23 @@ const StrukturOrganisasi: React.FC = () => {
         const elapsed = timestamp - startTime;
         const progress = (elapsed % duration) / duration;
 
-        if (!isUserScrolling) { // Hanya scroll otomatis jika pengguna tidak sedang scroll manual
+        if (!isUserScrolling) {
+          // Smooth transition
           scrollContainer.scrollLeft = progress * (scrollWidth - containerWidth);
         }
 
         requestAnimationFrame(animateScroll);
       };
 
-      // Memulai animasi scroll otomatis
       requestAnimationFrame(animateScroll);
 
-      // Menangani deteksi scroll manual oleh pengguna
+      // Deteksi scroll manual pengguna
       const handleUserScroll = () => {
         isUserScrolling = true;
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
           isUserScrolling = false;
-        }, 3000); // Menganggap pengguna selesai scroll setelah 1 detik
+        }, 3000); // Reset setelah 3 detik
       };
 
       let timeoutId: NodeJS.Timeout;
