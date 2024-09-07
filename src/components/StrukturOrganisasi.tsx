@@ -10,7 +10,7 @@ const StrukturOrganisasi: React.FC = () => {
     if (scrollContainer) {
       const scrollWidth = scrollContainer.scrollWidth;
       const containerWidth = scrollContainer.clientWidth;
-      const duration = 50000; // Perpanjang durasi animasi agar lebih smooth (50 detik)
+      const duration = 50000; // Durasi animasi (50 detik)
 
       let startTime: number | null = null;
 
@@ -18,18 +18,25 @@ const StrukturOrganisasi: React.FC = () => {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
         const progress = (elapsed % duration) / duration;
+        const maxScrollLeft = scrollWidth - containerWidth;
 
         if (!isUserScrolling) {
-          // Smooth transition
-          scrollContainer.scrollLeft = progress * (scrollWidth - containerWidth);
+          // Kalkulasi posisi scroll
+          scrollContainer.scrollLeft = progress * maxScrollLeft;
+
+          // Ketika mencapai akhir, reset scrollLeft tanpa loncatan
+          if (scrollContainer.scrollLeft >= maxScrollLeft) {
+            scrollContainer.scrollLeft = 0;
+          }
         }
 
         requestAnimationFrame(animateScroll);
       };
 
+      // Memulai animasi
       requestAnimationFrame(animateScroll);
 
-      // Deteksi scroll manual pengguna
+      // Deteksi scroll manual
       const handleUserScroll = () => {
         isUserScrolling = true;
         clearTimeout(timeoutId);
@@ -47,7 +54,7 @@ const StrukturOrganisasi: React.FC = () => {
     }
   }, []);
 
-  const items = Array.from({ length: 10 }, (_, i) => i);
+  const items = Array.from({ length: 7 }, (_, i) => i);
 
   return (
     <div className="flex flex-col items-center justify-center mt-12 bg-white py-10 px-4">
@@ -73,6 +80,25 @@ const StrukturOrganisasi: React.FC = () => {
               <Image
                 src={`/assets/img/user/images.png`} // Ganti dengan URL gambar yang sesuai
                 alt={`Foto Posisi ${item + 1}`}
+                width={400} // Sesuaikan ukuran gambar
+                height={400} // Sesuaikan ukuran gambar
+                className="w-24 h-24 rounded-full mb-2 object-cover"
+              />
+              <h3 className="text-lg font-semibold text-center mb-2">Nama Posisi {item + 1}</h3>
+              <p className="text-center text-sm text-gray-700">
+                Deskripsi singkat tentang posisi ini.
+              </p>
+            </div>
+          ))}
+          {/* Duplikat item untuk menciptakan ilusi infinite scrolling */}
+          {items.map((item) => (
+            <div
+              key={`dup-${item}`}
+              className="bg-white p-4 rounded-lg shadow-md w-64 flex-shrink-0 flex flex-col items-center snap-center"
+            >
+              <Image
+                src={`/assets/img/user/images.png`} // Ganti dengan URL gambar yang sesuai
+                alt={`Foto Posisi Duplikat ${item + 1}`}
                 width={400} // Sesuaikan ukuran gambar
                 height={400} // Sesuaikan ukuran gambar
                 className="w-24 h-24 rounded-full mb-2 object-cover"
