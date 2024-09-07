@@ -35,7 +35,7 @@ const StrukturOrganisasi: React.FC = () => {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
           isUserScrolling = false;
-        }, 1000); // Menganggap pengguna selesai scroll setelah 1 detik
+        }, 3000); // Menganggap pengguna selesai scroll setelah 1 detik
       };
 
       let timeoutId: NodeJS.Timeout;
