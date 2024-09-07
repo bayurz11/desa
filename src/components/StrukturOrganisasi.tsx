@@ -14,7 +14,7 @@ const StrukturOrganisasi: React.FC = () => {
     if (scrollContainer) {
       const scrollWidth = scrollContainer.scrollWidth;
       const containerWidth = scrollContainer.clientWidth;
-      const duration = 50000; // Durasi animasi (50 detik)
+      const duration = 30000; // Durasi animasi (50 detik)
       let startTime: number | null = null;
 
       const animateScroll = (timestamp: number) => {
@@ -43,7 +43,7 @@ const StrukturOrganisasi: React.FC = () => {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
           isUserInteracting = false;
-        }, 3000); // Lanjutkan scroll otomatis setelah 3 detik
+        }, 1000); // Lanjutkan scroll otomatis setelah 3 detik
       };
 
       let timeoutId: NodeJS.Timeout;
