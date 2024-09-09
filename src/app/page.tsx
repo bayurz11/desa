@@ -7,6 +7,7 @@ import InfoCards from "../components/InfoCards";
 import SambutanPageSection from "../components/sambutanPageSection";
 import StrukturOrganisasi from "../components/StrukturOrganisasi";
 import PopulationProps from "../components/AdmPenduduk";
+import Berita from "../components/Berita";
 import Image from "next/image";
 
 export default function TypewriterEffectDemo() {
@@ -75,24 +76,20 @@ export default function TypewriterEffectDemo() {
       <SambutanPageSection />
       <StrukturOrganisasi />
       <PopulationProps total={1234} male={600} female={634} keluarga={650} Sementara={25} Mutasi={2} />
+      <Berita/>
+
+
       {showScrollToTop && (
-  <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-    <div
-      className="w-full h-full rounded-full border-4 border-white flex items-center justify-center"
-      style={{
+        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"><div className="w-full h-full rounded-full border-4 border-white flex items-center justify-center"style={{
         background: `conic-gradient(#4F46E5 ${scrollProgress}%, transparent ${scrollProgress}% 100%)`,
-      }}
-    >
+      }}>
       <button
         onClick={scrollToTop}
-        className="bg-blue-500 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
-      >
+        className="bg-blue-500 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
         <span className="text-lg md:text-xl">🚀</span>
       </button>
-    </div>
-  </div>
-)}
-
+      </div>
+    </div>)}
     </div>
   );
 }
