@@ -20,7 +20,7 @@ interface PetaDesaProps {
 
 const PetaDesa: React.FC<PetaDesaProps> = ({ lat, lng, zoom = 13 }) => {
   return (
-    <div className="w-full h-96">
+    <div className="w-full h-96 ">
       {/* Pastikan untuk menggunakan MapContainer dan komponen terkait dari react-leaflet */}
       <MapContainer center={[lat, lng]} zoom={zoom} className="w-full h-full">
         <TileLayer
