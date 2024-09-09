@@ -102,7 +102,7 @@ export default function TypewriterEffectDemo() {
       <Potensi />
       <Wisata />
       <Galery />
-      <PetaDesa lat={-0.17376} lng={104.48504} />
+      <PetaDesa />
       <Footer/>
       {showScrollToTop && (
         <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">

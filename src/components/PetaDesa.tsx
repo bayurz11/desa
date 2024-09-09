@@ -1,37 +1,18 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
 
-// Icon custom untuk marker di peta
-const markerIcon = new L.Icon({
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
+// Import MapContainer secara dinamis, tanpa server-side rendering
+const PetaDesa = dynamic(() => import('../components/PetaDesaComponent'), {
+  ssr: false,
 });
 
-// Definisikan tipe properti yang digunakan di komponen ini
-interface PetaDesaProps {
-  lat: number;
-  lng: number;
-  zoom?: number;
-}
-
-const PetaDesa: React.FC<PetaDesaProps> = ({ lat, lng, zoom = 13 }) => {
+// Ini komponen utama yang akan kamu gunakan
+const PetaDesaWrapper: React.FC = () => {
   return (
-    <div className="relative w-full h-96 px-4 py-6 lg:px-16 lg:py-10"> {/* Menambahkan padding kiri-kanan dan atas-bawah */}
-      <MapContainer center={[lat, lng]} zoom={zoom} className="w-full h-full rounded-lg shadow-lg"> {/* Menambahkan rounded dan shadow */}
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[lat, lng]} icon={markerIcon}>
-          <Popup>Lokasi Desa</Popup>
-        </Marker>
-      </MapContainer>
+    <div>
+      <PetaDesa lat={-0.17376} lng={104.48504} />
     </div>
   );
 };
 
-export default PetaDesa;
+export default PetaDesaWrapper;
