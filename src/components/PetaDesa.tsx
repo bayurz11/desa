@@ -20,9 +20,8 @@ interface PetaDesaProps {
 
 const PetaDesa: React.FC<PetaDesaProps> = ({ lat, lng, zoom = 13 }) => {
   return (
-    <div className="w-full h-96 ">
-      {/* Pastikan untuk menggunakan MapContainer dan komponen terkait dari react-leaflet */}
-      <MapContainer center={[lat, lng]} zoom={zoom} className="w-full h-full">
+    <div className="relative w-full h-96 px-4 py-6 lg:px-16 lg:py-10"> {/* Menambahkan padding kiri-kanan dan atas-bawah */}
+      <MapContainer center={[lat, lng]} zoom={zoom} className="w-full h-full rounded-lg shadow-lg"> {/* Menambahkan rounded dan shadow */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
