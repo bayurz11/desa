@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
+import Link from 'next/link';
 
 interface NavbarProps {
   isOpen: boolean;
@@ -39,12 +40,16 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button className="w-20 h-8 rounded-lg bg-blue-500 text-white text-sm">
-              Masuk
-            </button>
-            <button className="w-20 h-8 rounded-lg border-2 border-green-500 text-green-500 text-sm bg-transparent hover:bg-green-500 hover:text-white">
-              Daftar
-            </button>
+            <Link href="/masuk">
+              <span className="w-20 h-8 rounded-lg bg-blue-500 text-white text-sm flex items-center justify-center cursor-pointer">
+                Masuk
+              </span>
+            </Link>
+            <Link href="/daftar">
+              <span className="w-20 h-8 rounded-lg border-2 border-green-500 text-green-500 text-sm bg-transparent hover:bg-green-500 hover:text-white flex items-center justify-center cursor-pointer">
+                Daftar
+              </span>
+            </Link>
           </div>
 
           <div className="-mr-2 flex md:hidden">
@@ -91,12 +96,16 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
             </a>
           ))}
           <div className="flex flex-col space-y-2 mt-4">
-            <button className="w-full h-8 rounded-lg bg-blue-500 text-white text-sm">
-              Masuk
-            </button>
-            <button className="w-full h-8 rounded-lg border-2 border-green-500 text-green-500 text-sm bg-transparent hover:bg-green-500 hover:text-white">
-              Daftar
-            </button>
+            <Link href="/masuk">
+              <span className="w-full h-8 rounded-lg bg-blue-500 text-white text-sm flex items-center justify-center cursor-pointer">
+                Masuk
+              </span>
+            </Link>
+            <Link href="/daftar">
+              <span className="w-full h-8 rounded-lg border-2 border-green-500 text-green-500 text-sm bg-transparent hover:bg-green-500 hover:text-white flex items-center justify-center cursor-pointer">
+                Daftar
+              </span>
+            </Link>
           </div>
         </div>
       </div>
