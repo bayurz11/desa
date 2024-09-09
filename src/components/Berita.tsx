@@ -42,8 +42,8 @@ const BeritaDesa: React.FC = () => {
           </p>
           {/* Tombol dengan animasi hover */}
           <div className="mt-6">
-            <button className="bg-gray-300 rounded-md py-2 px-4 text-gray-700 transition duration-300 hover:bg-gray-400">
-              Selengkapnya
+            <button className="bg-blue-500 rounded-md py-2 px-4 text-white transition duration-300 hover:bg-blue-600">
+             Lihat Semua Berita
             </button>
           </div>
         </div>
@@ -55,7 +55,7 @@ const BeritaDesa: React.FC = () => {
             {beritaList.map((berita) => (
               <div
                 key={berita.id}
-                className="bg-white rounded-lg shadow-lg overflow-hidden w-60 flex-shrink-0 transition-all duration-300 min-h-[150px] hover:min-h-[250px] hover:shadow-2xl"
+                className="bg-blue-500 rounded-lg shadow-lg overflow-hidden w-60 flex-shrink-0 transition-all duration-300 min-h-[150px] hover:min-h-[250px] hover:shadow-2xl"
               >
                 <div className="overflow-hidden">
                   <Image
@@ -70,7 +70,7 @@ const BeritaDesa: React.FC = () => {
                   <h3 className="text-xl font-semibold mb-2">{berita.title}</h3>
                   <p className="text-[10px] text-gray-500 mb-2">Tanggal: {berita.date}</p>
                   
-                  <button className="mt-4 bg-gray-300 rounded-md py-2 px-4 text-gray-700 transition duration-300 hover:bg-gray-400">
+                  <button className="mt-4 bg-blue-500 rounded-md py-2 px-4 text-white transition duration-300 hover:bg-blue-600">
                     Selengkapnya
                   </button>
                 </div>
