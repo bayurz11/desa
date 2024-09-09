@@ -8,6 +8,10 @@ import SambutanPageSection from "../components/sambutanPageSection";
 import StrukturOrganisasi from "../components/StrukturOrganisasi";
 import PopulationProps from "../components/AdmPenduduk";
 import Berita from "../components/Berita";
+import Potensi from "../components/Potensi";
+import Wisata from "../components/Wisata";
+import Galery from "../components/Galery";
+import PetaDesa from "../components/PetaDesa";
 import Image from "next/image";
 
 export default function TypewriterEffectDemo() {
@@ -77,7 +81,10 @@ export default function TypewriterEffectDemo() {
       <StrukturOrganisasi />
       <PopulationProps total={1234} male={600} female={634} keluarga={650} Sementara={25} Mutasi={2} />
       <Berita/>
-
+      <Potensi/>
+      <Wisata/>
+      <Galery/>
+      <PetaDesa lat={-0.17376} lng={104.48504} />
 
       {showScrollToTop && (
         <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"><div className="w-full h-full rounded-full border-4 border-white flex items-center justify-center"style={{
