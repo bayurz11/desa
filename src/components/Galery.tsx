@@ -28,13 +28,13 @@ const Gallery: React.FC = () => {
       </div>
 
       {/* Grid untuk desktop */}
-      <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8 ">
+      <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8">
         {galleryImages.map((image, index) => (
           <div
             key={index}
             className="relative overflow-hidden rounded-xl shadow-lg group hover:shadow-2xl transition-shadow duration-300"
           >
-            <div className="relative overflow-hidden w-full h-60">
+            <div className="relative w-full h-60">
               <Image
                 src={image.src}
                 alt={`Galeri ${index}`}
@@ -42,9 +42,9 @@ const Gallery: React.FC = () => {
                 width={400}
                 height={300}
               />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-              <p className="text-white text-lg font-semibold">{image.title}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                <p className="text-white text-lg font-semibold">{image.title}</p>
+              </div>
             </div>
           </div>
         ))}
@@ -52,14 +52,14 @@ const Gallery: React.FC = () => {
 
       {/* Scroll horizontal untuk mobile */}
       <div className="md:hidden overflow-x-auto">
-        <div className="flex space-x-4 p-2 overflow-hidden ">
+        <div className="flex space-x-4 p-2">
           {galleryImages.map((image, index) => (
             <div
               key={index}
               className="relative overflow-hidden rounded-xl shadow-lg flex-shrink-0 transition-transform duration-500 hover:scale-105"
               style={{ width: '280px' }}
             >
-              <div className="relative overflow-hidden w-full h-48">
+              <div className="relative w-full h-48">
                 <Image
                   src={image.src}
                   alt={`Galeri ${index}`}
@@ -67,11 +67,9 @@ const Gallery: React.FC = () => {
                   width={300}
                   height={225}
                 />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-                <p className="text-white text-base font-medium">
-                  {image.title}
-                </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                  <p className="text-white text-base font-medium">{image.title}</p>
+                </div>
               </div>
             </div>
           ))}

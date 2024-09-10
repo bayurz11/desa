@@ -19,8 +19,13 @@ interface PetaDesaProps {
 
 const PetaDesaComponent: React.FC<PetaDesaProps> = ({ lat, lng, zoom = 13 }) => {
   return (
-    <div className="relative w-full h-96 px-4 py-6 lg:px-16 lg:py-10">
-      <MapContainer center={[lat, lng]} zoom={zoom} className="w-full h-full rounded-lg shadow-lg">
+    <div className="relative w-full h-96 px-4 py-6 lg:px-16 lg:py-10 box-border mt-16 z-10">
+      <MapContainer
+        center={[lat, lng]}
+        zoom={zoom}
+        className="w-full h-full rounded-lg shadow-lg"
+        style={{ zIndex: 10 }} // Atur z-index di sini
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
