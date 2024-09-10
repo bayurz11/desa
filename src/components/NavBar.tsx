@@ -1,7 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from 'next/link';
-import { useEffect, useState } from "react";
 
 interface NavbarProps {
   isOpen: boolean;
@@ -10,15 +9,30 @@ interface NavbarProps {
 
 export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
   const [currentPath, setCurrentPath] = useState<string>("");
+  const [hasShadow, setHasShadow] = useState<boolean>(false);
 
   useEffect(() => {
     setCurrentPath(window.location.pathname);
+
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setHasShadow(true);
+      } else {
+        setHasShadow(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const isActive = (path: string) => currentPath === path ? "text-blue-500 font-bold" : "text-gray-700 dark:text-gray-200";
 
   return (
-    <nav className="bg-white dark:bg-gray-800 shadow-md w-full fixed top-0 left-0 z-50">
+    <nav className={`bg-white dark:bg-gray-800 ${hasShadow ? 'shadow-md' : ''} w-full fixed top-0 left-0 z-50 transition-shadow duration-300`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16 items-center">
           {/* Logo with link to home */}
