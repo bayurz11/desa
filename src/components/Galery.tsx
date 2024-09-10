@@ -1,17 +1,21 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
+
+interface GalleryImage {
+  src: string;
+  title: string;
+}
 
 const Gallery: React.FC = () => {
-  // Data gambar galeri
-  const galleryImages = [
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 1" },
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 2" },
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 3" },
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 4" },
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 5" },
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 6" },
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 7" },
-    { src: "/assets/img/1.avif", title: "Pemandangan Desa 8" },
+  const galleryImages: GalleryImage[] = [
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 1' },
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 2' },
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 3' },
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 4' },
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 5' },
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 6' },
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 7' },
+    { src: '/assets/img/1.avif', title: 'Pemandangan Desa 8' },
   ];
 
   return (
@@ -24,19 +28,21 @@ const Gallery: React.FC = () => {
       </div>
 
       {/* Grid untuk desktop */}
-      <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8 ">
         {galleryImages.map((image, index) => (
           <div
             key={index}
             className="relative overflow-hidden rounded-xl shadow-lg group hover:shadow-2xl transition-shadow duration-300"
           >
-            <Image
-              src={image.src}
-              alt={`Galeri ${index}`}
-              className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-105"
-              width={400}
-              height={300}
-            />
+            <div className="relative overflow-hidden w-full h-60">
+              <Image
+                src={image.src}
+                alt={`Galeri ${index}`}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width={400}
+                height={300}
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
               <p className="text-white text-lg font-semibold">{image.title}</p>
             </div>
@@ -45,21 +51,23 @@ const Gallery: React.FC = () => {
       </div>
 
       {/* Scroll horizontal untuk mobile */}
-      <div className="md:hidden overflow-x-auto no-scrollbar">
-        <div className="flex space-x-4">
+      <div className="md:hidden overflow-x-auto">
+        <div className="flex space-x-4 p-2 overflow-hidden ">
           {galleryImages.map((image, index) => (
             <div
               key={index}
               className="relative overflow-hidden rounded-xl shadow-lg flex-shrink-0 transition-transform duration-500 hover:scale-105"
-              style={{ width: "280px" }}
+              style={{ width: '280px' }}
             >
-              <Image
-                src={image.src}
-                alt={`Galeri ${index}`}
-                className="w-full h-56 object-cover"
-                width={300}
-                height={225}
-              />
+              <div className="relative overflow-hidden w-full h-48">
+                <Image
+                  src={image.src}
+                  alt={`Galeri ${index}`}
+                  className="w-full h-full object-cover"
+                  width={300}
+                  height={225}
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
                 <p className="text-white text-base font-medium">
                   {image.title}

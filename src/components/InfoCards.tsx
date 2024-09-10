@@ -5,7 +5,7 @@ interface CardProps {
 }
 
 const cardData = [
-  { src: "/assets/img/infocard/map.png", alt: "Peta Desa Icon", text: "Peta Desa", href: "/peta-desa" },
+  { src: "/assets/img/infocard/map.png", alt: "Peta Desa Icon", text: "Peta Desa", href: "../peta" },
   { src: "/assets/img/infocard/compliant.png", alt: "Produk Hukum Icon", text: "Produk Hukum", href: "/produk-hukum" },
   { src: "/assets/img/infocard/document.png", alt: "Informasi Publik Icon", text: "Informasi Publik", href: "/informasi-publik" },
   { src: "/assets/img/infocard/archive.png", alt: "Arsip Berita Icon", text: "Arsip Berita", href: "/arsip-berita" },

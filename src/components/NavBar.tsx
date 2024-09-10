@@ -25,20 +25,31 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
             </span>
           </div>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex flex-1 justify-center items-center">
             <div className="flex space-x-9">
-              {["Beranda", "Profil Desa", "Infografis", "Peta Desa", "Berita", "PPID"].map((item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="text-gray-700 dark:text-gray-200 font-bold hover:text-blue-500 hover:underline transition duration-300"
-                >
-                  {item}
-                </a>
-              ))}
+              <Link href="/" className="text-gray-700 dark:text-gray-200 font-bold hover:text-blue-500 hover:underline transition duration-300">
+                Beranda
+              </Link>
+              <Link href="/profil-desa" className="text-gray-700 dark:text-gray-200 font-bold hover:text-blue-500 hover:underline transition duration-300">
+                Profil Desa
+              </Link>
+              <Link href="/infografis" className="text-gray-700 dark:text-gray-200 font-bold hover:text-blue-500 hover:underline transition duration-300">
+                Infografis
+              </Link>
+              <Link href="/peta" className="text-gray-700 dark:text-gray-200 font-bold hover:text-blue-500 hover:underline transition duration-300">
+                Peta Desa
+              </Link>
+              <Link href="/berita" className="text-gray-700 dark:text-gray-200 font-bold hover:text-blue-500 hover:underline transition duration-300">
+                Berita
+              </Link>
+              <Link href="/ppid" className="text-gray-700 dark:text-gray-200 font-bold hover:text-blue-500 hover:underline transition duration-300">
+                PPID
+              </Link>
             </div>
           </div>
 
+          {/* Login/Register */}
           <div className="hidden md:flex items-center space-x-4">
             <Link href="/masuk">
               <span className="w-20 h-8 rounded-lg bg-blue-500 text-white text-sm flex items-center justify-center cursor-pointer">
@@ -52,6 +63,7 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
             </Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -86,15 +98,26 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
       {/* Mobile Menu */}
       <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {["Beranda", "Profil Desa", "Infografis", "Peta Desa", "Berita"].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="text-gray-700 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium"
-            >
-              {item}
-            </a>
-          ))}
+          <Link href="/" className="text-gray-700 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">
+            Beranda
+          </Link>
+          <Link href="/profil-desa" className="text-gray-700 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">
+            Profil Desa
+          </Link>
+          <Link href="/infografis" className="text-gray-700 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">
+            Infografis
+          </Link>
+          <Link href="/peta" className="text-gray-700 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">
+            Peta Desa
+          </Link>
+          <Link href="/berita" className="text-gray-700 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">
+            Berita
+          </Link>
+          <Link href="/ppid" className="text-gray-700 dark:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">
+            PPID
+          </Link>
+
+          {/* Login/Register Mobile */}
           <div className="flex flex-col space-y-2 mt-4">
             <Link href="/masuk">
               <span className="w-full h-8 rounded-lg bg-blue-500 text-white text-sm flex items-center justify-center cursor-pointer">
