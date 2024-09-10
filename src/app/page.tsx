@@ -105,7 +105,7 @@ export default function TypewriterEffectDemo() {
       <PetaDesa />
       <Footer />
       {showScrollToTop && (
-        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center z-50">
           <div
             className="w-full h-full rounded-full border-4 border-white flex items-center justify-center"
             style={{
