@@ -13,16 +13,20 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <Image
-              src="/assets/img/logo/images.jpeg"
-              alt="Logo"
-              width={40}
-              height={35}
-              className="h-8 w-6"
-            />
-            <span className="ml-2 font-semibold text-xl dark:text-white">
-              Mentuda
-            </span>
+            <Link href="/">
+              <a className="flex items-center">
+                <Image
+                  src="/assets/img/logo/images.jpeg"
+                  alt="Logo"
+                  width={40}
+                  height={35}
+                  className="h-8 w-6"
+                />
+                <span className="ml-2 font-semibold text-xl dark:text-white">
+                  Mentuda
+                </span>
+              </a>
+            </Link>
           </div>
 
           {/* Desktop Menu */}
