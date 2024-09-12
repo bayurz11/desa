@@ -83,7 +83,6 @@ export default function TypewriterEffectDemo() {
         </div>
         <InfoCards />
       </div>
-      <SambutanPageSection />
       <StrukturOrganisasi />
       <PopulationProps
         total={1234}
