@@ -83,7 +83,6 @@ export default function TypewriterEffectDemo() {
         </div>
         <InfoCards />
       </div>
-      <StrukturOrganisasi />
       <PopulationProps
         total={1234}
         male={600}
@@ -92,6 +91,7 @@ export default function TypewriterEffectDemo() {
         Sementara={25}
         Mutasi={2}
       />
+      <StrukturOrganisasi />
       <Potensi />
       <Berita />
       <Galery />
