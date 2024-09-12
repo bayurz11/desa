@@ -181,12 +181,12 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
 
           {/* Login/Register Mobile */}
           <div className="flex flex-col space-y-2 mt-4">
-            <Link href="/masuk">
+            <Link href="Login">
               <span className="w-full h-8 rounded-lg bg-blue-500 text-white text-sm flex items-center justify-center cursor-pointer hover:bg-blue-600">
                 Masuk
               </span>
             </Link>
-            <Link href="/daftar">
+            <Link href="Register">
               <span className="w-full h-8 rounded-lg border-2 border-green-500 text-green-500 text-sm bg-transparent hover:bg-green-500 hover:text-white flex items-center justify-center cursor-pointer">
                 Daftar
               </span>
