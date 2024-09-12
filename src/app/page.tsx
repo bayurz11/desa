@@ -9,7 +9,6 @@ import StrukturOrganisasi from "../components/StrukturOrganisasi";
 import PopulationProps from "../components/AdmPenduduk";
 import Berita from "../components/Berita";
 import Potensi from "../components/Potensi";
-import Wisata from "../components/Wisata";
 import Galery from "../components/Galery";
 import PetaDesa from "../components/PetaDesa";
 import Footer from "../components/Footer";
@@ -94,9 +93,8 @@ export default function TypewriterEffectDemo() {
         Sementara={25}
         Mutasi={2}
       />
-      <Berita />
       <Potensi />
-      <Wisata />
+      <Berita />
       <Galery />
       <PetaDesa />
       <Footer />
