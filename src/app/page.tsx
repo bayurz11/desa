@@ -57,10 +57,6 @@ export default function TypewriterEffectDemo() {
   }, [isBrowser]);
 
   const words = [
-    { text: "Selamat" },
-    { text: "Datang" },
-    { text: "di" },
-    { text: "Website" },
     { text: "Desa" },
     {
       text: "Mentuda",
