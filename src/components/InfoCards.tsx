@@ -39,7 +39,8 @@ const Card: React.FC<CardProps> = ({ card }) => (
 
 const InfoCards: React.FC = () => {
   return (
-    <div className="mt-10">
+    <div
+    className="mt-10">
       {/* Desktop Cards */}
       <div className="hidden md:grid md:grid-cols-8 md:gap-4">
         {cardData.map((card, index) => (

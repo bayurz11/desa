@@ -13,6 +13,7 @@ import Galery from "../components/Galery";
 import PetaDesa from "../components/PetaDesa";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import { motion } from 'framer-motion';
 
 export default function TypewriterEffectDemo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,12 +77,19 @@ export default function TypewriterEffectDemo() {
           height={150}
         />
         <TypewriterEffect words={words} />
-        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-10">
+        <motion.div initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8 }}
+            className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-10">
           <p className="text-center">
             Sumber informasi terbaru tentang pemerintahan di Desa Mentuda
           </p>
-        </div>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1.5, y: 0 }} 
+            transition={{ duration: 0.8 }}>
         <InfoCards />
+        </motion.div>
       </div>
       <PopulationProps
         total={1234}

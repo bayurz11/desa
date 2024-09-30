@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from '@react-spring/web';
-
+import { motion } from 'framer-motion';
 interface PopulationCardProps {
   title: string;
   count: number;
@@ -37,7 +37,9 @@ interface PopulationProps {
 
 const PopulationStatistics: React.FC<PopulationProps> = ({ total, male, female, keluarga, Sementara, Mutasi }) => {
   return (
-    <div className="p-8 animate-fade-in">
+    <motion.div initial={{ opacity: 0, y: 80 }}
+    animate={{ opacity: 1.5, y: 0 }} 
+    transition={{ duration: 0.8 }} className="p-8 animate-fade-in">
       <h2 className="text-3xl font-bold text-center mb-6">Administrasi Penduduk</h2>
       <p className="text-center mb-10 text-gray-700">
         Sistem digital yang berfungsi mempermudah pengelolaan data dan informasi terkait dengan kependudukan dan
@@ -52,7 +54,7 @@ const PopulationStatistics: React.FC<PopulationProps> = ({ total, male, female, 
         <PopulationCard title="Penduduk Sementara" count={Sementara} />
         <PopulationCard title="Mutasi Penduduk" count={Mutasi} />
       </div>
-    </div>
+      </motion.div>
   );
 };
 
